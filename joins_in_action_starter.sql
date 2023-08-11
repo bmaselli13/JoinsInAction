@@ -26,11 +26,13 @@ SELECT movies.* FROM movies INNER JOIN users ON movie_id = users.user_id;
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 4 >>>>>>>>>>>>>>>>>>>>>>>
 -- Determine which lead studio's movies are favorited by users the most.
 -- EXPECTED RESULT: Disney
-
+SELECT m.lead_studio, COUNT(u.favorite_movie_id) AS favorite_count FROM movies m LEFT JOIN users u ON m.movie_id = u.favorite_movie_id
+GROUP BY m.lead_studio ORDER BY favorite_count DESC LIMIT 1;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 5 >>>>>>>>>>>>>>>>>>>>>>>
 -- Get the average Rotten Tomatoes score of all movies that are favorited by a user.
 -- EXPECTED RESULT: 52.21
+SELECT AVG(m.rotten_tomatoes) AS average_rotten_tomatoes FROM movies m INNER JOIN users u ON m.movie_id = u.favorite_movie_id;
 
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 6 >>>>>>>>>>>>>>>>>>>>>>>
