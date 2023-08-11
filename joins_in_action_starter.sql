@@ -16,12 +16,12 @@ SELECT movies.*, users.* FROM movies LEFT JOIN users ON movies.user_id = users.u
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 2 >>>>>>>>>>>>>>>>>>>>>>>
 -- Do a right join to see all records from the users table and matching records from the movies table.
 -- EXPECTED RESULT: 16 Rows Returned
-
+SELECT users.*, movies.* FROM users RIGHT JOIN movies ON users.favorite_movie_id = movies.movie_id WHERE users.favorite_movie_id IS NOT NULL;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 3 >>>>>>>>>>>>>>>>>>>>>>>
 -- Do a inner join to get only the rows from the movies tables that have matching rows in the users tables.
 -- EXPECTED RESULT: 14 Rows Returned
-
+SELECT movies.* FROM movies INNER JOIN users ON movie_id = users.user_id;
 
 -- <<<<<<<<<<<<<<<<<<<<<< PROBLEM 4 >>>>>>>>>>>>>>>>>>>>>>>
 -- Determine which lead studio's movies are favorited by users the most.
